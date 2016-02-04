@@ -1,2 +1,2 @@
 all:
-	g++ npipe.cpp -o npipe
+	gcc npipe.cpp -o npipe
