@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <fcntl.h>
 
 using namespace std;
 
@@ -22,12 +22,16 @@ int main (int argc, char **argv)
     int in_fifo  = mkfifo("in.fifo", 0666);
     int out_fifo = mkfifo("out.fifo", 0666);
 
+    int inf  = open("in.fifo", O_RDONLY);
+    int outf = open("out.fifo", O_WRONLY);
+
+
     const unsigned int size_bf = 512;
     char bf[size_bf];
 
-    while ( int sz = read(in_fifo, bf, size_bf) ) {
+    while ( int sz = read(inf, bf, size_bf) ) {
         printf("Read: %s\n", bf);
-        write( out_fifo, bf, sz );
+        write( outf, bf, sz );
 
         memset(bf, 0, 512);
     }
