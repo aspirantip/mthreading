@@ -45,7 +45,8 @@ int main(int argc, char **argv){
 
     //receive message
     // ==========================================
-    char *buff;
+
+    char buff[100];
     printf("wait message ....\n");
     int sz_buff = mq_receive ( mq_id, buff, 8192, NULL);
     if (sz_buff == -1){
@@ -58,7 +59,7 @@ int main(int argc, char **argv){
 
     // write to file
     // ==========================================
-/*
+
     FILE *p_file;
     p_file = fopen("/home/box/message.txt", "w");
     if (p_file != NULL){
@@ -69,7 +70,7 @@ int main(int argc, char **argv){
         std::cout << "[error | fopen] " << strerror ( errno ) << std::endl;
 
     }
-*/
+
 
 
     //close queue
