@@ -1,2 +1,2 @@
 all:
-	g++ -lrt queue_posix.cpp -o queue_posix
+	g++ -o queue_posix queue_posix.cpp -lrt
