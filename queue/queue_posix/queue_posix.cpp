@@ -44,7 +44,7 @@ int main(int argc, char **argv){
 
     //receive message
     // ==========================================
-    char *buff;
+    char buff[100];
 	printf("wait message ....\n");
 //    std::cout << "wait message ...";
     int sz_buff = mq_receive ( mq_id, buff, 8192, NULL);
