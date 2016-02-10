@@ -20,7 +20,10 @@ int main(int argc, char **argv){
 
     //creat queue
     // ==========================================
-    mqd_t mq_id = mq_open( mqd, O_CREAT | O_RDONLY );
+    struct mq_attr attr;
+    attr.mq_maxmsg = 10;
+    attr.mq_msgsize = 100;
+    mqd_t mq_id = mq_open( mqd, O_CREAT, O_RDONLY, &attr );
     if (mq_id == -1){
         std::cout << "[error | mq_open] " << strerror( errno ) << std::endl;
         return 0;
